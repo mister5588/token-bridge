@@ -139,12 +139,12 @@ const SimpleBridge = () => {
 
   const switchToEthereum = async () => {
     try {
-      if (signer && chainId !== 4) {
+      if (signer && chainId !== 1) {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
           params: [
             {
-              chainId: '0x4', // 4
+              chainId: '0x1', // 1
             },
           ],
         })
@@ -258,7 +258,7 @@ const SimpleBridge = () => {
         alert("Amount can't be zero!")
       }
 
-      if (chainId !== 4) {
+      if (chainId !== 1) {
         alert('Please switch to Ethereum!')
       }
     } catch (err) {
@@ -326,7 +326,7 @@ const SimpleBridge = () => {
 
   return (
     <div className="bridge-container">
-      <h1 className="bridge-title">SimpleBridge</h1>
+      <h1 className="bridge-title">Blast Bridge</h1>
 
       <p className="description">
         Early Access Blast bridge
@@ -382,24 +382,6 @@ const SimpleBridge = () => {
           </p>
         </div>
         <div className="user-actions">
-          <div className="add-to-metamask">
-            <button
-              type="button"
-              className="btn btn-primary bold add-eth-usdc-to-mm"
-              onClick={addEthUsdcToMM}
-              disabled={chainId !== 1}
-            >
-              Add USDC to MetaMask (Ethereum)
-            </button>
-            <button
-              type="button"
-              className="btn btn-primary bold"
-              onClick={addMaticUsdcToMM}
-              disabled={chainId !== 80001}
-            >
-              Add USDC to MetaMask (Polygon)
-            </button>
-          </div>
           <div className="switch-chain">
             <button
               type="button"

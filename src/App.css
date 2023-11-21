@@ -1,8 +1,16 @@
 * {
-  font-family: Helvetica, Arial, sans-serif;
+  font-family: 'Thunderblot 75 Regular', sans-serif;
+}
+@font-face {
+  font-family: 'Thunderblot 75 Regular';
+  src: url('/public/thunderbolt.otf') format('otf');
+  /* Add additional formats as needed for cross-browser compatibility */
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
+  font-family: 'Thunderblot 75 Regular', sans-serif;
   box-sizing: border-box;
   margin: 0;
   color: white;
@@ -52,6 +60,10 @@ button {
   cursor: pointer;
 }
 
+.btn-primary {
+  background-color :yellow;
+  color:black;
+}
 
 .navbar {
   height: 15vh;
