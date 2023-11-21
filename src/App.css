@@ -5,6 +5,8 @@
 body {
   box-sizing: border-box;
   margin: 0;
+  color: white;
+  background-color: black;
 }
 
 .App {
@@ -50,6 +52,7 @@ button {
   cursor: pointer;
 }
 
+
 .navbar {
   height: 15vh;
   width: 100vw;
@@ -78,6 +81,7 @@ button {
 
 .connect-wallet {
   margin: 35px 0 40px;
+
 }
 
 .personal-stats {
