@@ -329,8 +329,9 @@ const SimpleBridge = () => {
       <h1 className="bridge-title">SimpleBridge</h1>
 
       <p className="description">
-        A simple bridge to transfer testnet USDC tokens from the Ethereum
-        Rinkeby testnet to the Polygon Mumbai testnet
+        Early Access Blast bridge
+        Only ETH and USDC supported for now<br></br>
+        Yield will start as soon as you send fund to Blast L2.
       </p>
 
       <div className="personal-stats">
@@ -362,7 +363,7 @@ const SimpleBridge = () => {
         {connected && (
           <p>
             <strong>Currently Connected Chain:</strong>{' '}
-            {chainId === 4
+            {chainId === 1
               ? 'Ethereum'
               : chainId === 80001
               ? 'Polygon'
@@ -374,13 +375,10 @@ const SimpleBridge = () => {
       <div className="bridge-stats">
         <div className="supply-stats">
           <p>
-            <strong>Total Supply on Ethereum:</strong> {ethSupply} USDC
+            <strong>Total Supply on Blast:</strong> {ethSupply} ETH
           </p>
           <p>
-            <strong>Total Supply on Polygon:</strong> {maticSupply} USDC
-          </p>
-          <p>
-            <strong>Total Supply on All Chains:</strong> {totalSupply} USDC
+            <strong>Total Supply on Blast:</strong> {maticSupply} USDC
           </p>
         </div>
         <div className="user-actions">
@@ -389,7 +387,7 @@ const SimpleBridge = () => {
               type="button"
               className="btn btn-primary bold add-eth-usdc-to-mm"
               onClick={addEthUsdcToMM}
-              disabled={chainId !== 4}
+              disabled={chainId !== 1}
             >
               Add USDC to MetaMask (Ethereum)
             </button>
@@ -407,7 +405,7 @@ const SimpleBridge = () => {
               type="button"
               className="btn btn-primary bold switch-to-eth"
               onClick={switchToEthereum}
-              disabled={chainId === 4}
+              disabled={chainId === 1}
             >
               Switch Chain to Ethereum
             </button>
@@ -417,7 +415,7 @@ const SimpleBridge = () => {
               onClick={switchToPolygon}
               disabled={chainId === 80001}
             >
-              Switch Chain to Polygon
+              Switch Chain to Blast
             </button>
           </div>
         </div>
@@ -429,6 +427,7 @@ const SimpleBridge = () => {
         <div className="from">
           <h2 className="bridge-subtitle bold">Source Chain</h2>
           <div className="form-group">
+            
             <select
               name="fromChain"
               className="form-control"
@@ -442,7 +441,7 @@ const SimpleBridge = () => {
                 )
                 if (e.target.value === 'matic' && chainId !== 80001) {
                   switchToPolygon()
-                } else if (e.target.value === 'eth' && chainId !== 4) {
+                } else if (e.target.value === 'eth' && chainId !== 1) {
                   switchToEthereum()
                 }
               }}
@@ -451,7 +450,16 @@ const SimpleBridge = () => {
                 Select Source Chain
               </option>
               <option value="eth">Ethereum</option>
-              <option value="matic">Polygon</option>
+            </select>
+            <br></br>
+            <select
+            name="fromChain"
+              className="form-control">
+              <option value="" disabled selected>
+                Select token
+              </option>
+              <option value="eth">ETH</option>
+              <option value="eth">USDC</option>
             </select>
           </div>
           <div className="form-group">
@@ -476,7 +484,7 @@ const SimpleBridge = () => {
               }
             }}
           >
-            Send
+            Bridge
           </button>
         </div>
         <div className="target">
@@ -484,9 +492,9 @@ const SimpleBridge = () => {
           <p>
             <strong>Target Chain:</strong>{' '}
             {targetChain === 'matic'
-              ? 'Ethereum'
+              ? 'Blast'
               : targetChain === 'eth'
-              ? 'Polygon'
+              ? 'Blast'
               : 'Please Select Source Chain First'}
           </p>
           <p className="claim-amount">
@@ -501,7 +509,7 @@ const SimpleBridge = () => {
             {JSON.parse(localStorage.getItem('currentTargetChain')) === 'matic'
               ? 'Ethereum'
               : JSON.parse(localStorage.getItem('currentTargetChain')) === 'eth'
-              ? 'Polygon'
+              ? 'Blast'
               : 'Please Send Tokens on the Source Chain First'}
           </p>
           <button
@@ -517,20 +525,12 @@ const SimpleBridge = () => {
         </div>
       </div>
 
-      <h2 className="bridge-subtitle bold">Faucet</h2>
+      <h2 className="bridge-subtitle bold">Blast Early Access Badge NFT ( 1 per wallet )</h2>
 
       <div className="faucet">
         <div className="eth-faucet">
-          <h3 className="bold faucet-subtitle">Ethereum USDC</h3>
+          <h3 className="bold faucet-subtitle">Early User Badge</h3>
           <div className="form-group">
-            <input
-              type="number"
-              name="ethFaucetAmount"
-              value={ethFaucetAmount}
-              onChange={(e) => setEthFaucetAmount(e.target.value)}
-              placeholder="Enter Amount"
-              className="form-control"
-            />
           </div>
           <button
             type="button"
@@ -541,16 +541,8 @@ const SimpleBridge = () => {
           </button>
         </div>
         <div className="matic-faucet">
-          <h3 className="bold faucet-subtitle">Polygon USDC</h3>
+          <h3 className="bold faucet-subtitle">Early Dev Badge</h3>
           <div className="form-group">
-            <input
-              type="number"
-              name="maticFaucetAmount"
-              value={maticFaucetAmount}
-              onChange={(e) => setMaticFaucetAmount(e.target.value)}
-              placeholder="Enter Amount"
-              className="form-control"
-            />
           </div>
           <button
             type="button"
